@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 // get all workouts
 const getTodos = async (req, res) => {
-  const Todos = await Todo.find({}).sort({createdAt: -1})
+  const user_id = req.user._id
+  const Todos = await Todo.find({user_id}).sort({createdAt: -1})
   res.status(200).json(Todos)
 }
 
@@ -26,7 +27,7 @@ const getTodo = async (req, res) => {
 
 // create a new workout
 const createTodo = async (req, res) => {
-  const {title, description} = req.body
+  const {title, description,date} = req.body
 
   let emptyFields = []
 
@@ -36,13 +37,17 @@ const createTodo = async (req, res) => {
   if (!description) {
     emptyFields.push('description')
   }
+  if (!date) {
+    emptyFields.push('date')
+  }
   if (emptyFields.length > 0) {
     return res.status(400).json({ error: 'Please fill in all fields', emptyFields })
   }
 
   // add to the database
   try {
-    const todo = await Todo.create({ title, description })
+    const user_id = req.user._id
+    const todo = await Todo.create({ title, description,date,user_id })
     res.status(200).json(todo)
   } catch (error) {
     res.status(400).json({ error: error.message })
