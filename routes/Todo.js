@@ -6,22 +6,26 @@ const {
   deleteTodo, 
   updateTodo
 } = require('../controllers/TodoController')
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
 
-// GET all workouts
+// require auth for all todo routes
+router.use(requireAuth)
+
+// GET all todo
 router.get('/', getTodos)
 
-// GET a single workout
+// GET a single todo
 router.get('/:id', getTodo)
 
-// POST a new workout
+// POST a new todo
 router.post('/', createTodo)
 
-// DELETE a workout
+// DELETE a todo
 router.delete('/:id', deleteTodo)
 
-// UPDATE a workout
+// UPDATE a todo
 router.patch('/:id', updateTodo)
 
 module.exports = router

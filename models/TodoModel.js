@@ -10,6 +10,14 @@ const TodoSchema = new Schema({
   description: {
     type: String,
     required: true
+  },
+  date: {
+    type: Date, // Specify the data type as Date
+    required: true
+  },
+  user_id:{
+    type:String,
+    required:true
   }
 }, { timestamps: true })
 

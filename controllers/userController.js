@@ -20,7 +20,6 @@ const loginUser = async (req, res) => {
     res.status(400).json({error: error.message})
   }
 }
-
 // signup a user
 const signupUser = async (req, res) => {
   const {firstname,lastname,username,email, password} = req.body
