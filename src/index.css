@@ -1,0 +1,262 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/* layout */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+body {
+  background: #333;
+  margin: 0;
+  font-family: "Poppins";
+}
+header {
+  background: #f2efef;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+.pages{
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* homepage */
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+
+.create{
+  background: #444;
+}
+
+/* new workout form */
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}
+.btn {
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+.title{
+  font-weight: 800;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #480b0b;
+}
+.des{
+  color: #ccc;
+  font-weight: 500;
+  font-size: larger;
+}
+.thead{
+  color: #ccc;
+}
+.tit{
+  color: #ccc;
+  font-weight: 500;
+  font-size: larger;
+
+}
+.date{
+  color: #ccc;
+  font-weight: 500;
+  font-size: larger;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+
+.workout-details {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.workout-details h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.workout-details p {
+  margin-bottom: 8px;
+}
+
+.workout-details strong {
+  font-weight: bold;
+}
+
+.workout-details .material-symbols-outlined {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+  color: #6f2a2a
+}
+
+.workout-details .material-symbols-outlined:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 8px;
+
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #d32f2f;
+}
+/*navbar*/
+nav {
+  display: flex;
+  align-items: center;
+}
+nav a, nav button {
+  margin-left: 10px;
+}
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* auth forms */
+form.signup, form.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+
+}
+.filter{
+  max-width:150px;
+  margin-bottom: 40px;
+
+}
+.filterdiv{
+display: flex;
+align-items: center;
+color: #ccc;
+font-weight: 600;
+
+}
+.filterbtn{
+  margin-left: 20px;
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+
+}
+.loginbtn{
+  margin-top: 20px;
+}
+.signuph3{
+  text-align: center;
+}
+.span{
+  color: rgb(228, 152, 10);
+  font-weight: 900;
+}
