@@ -1,4 +1,7 @@
 const Todo = require('../models/TodoModel')
+const Category = require('../models/CategoryModel');
+const Priority=require('../models/PriorityModel');
+
 const mongoose = require('mongoose')
 
 // get all workouts
@@ -26,33 +29,63 @@ const getTodo = async (req, res) => {
 }
 
 // create a new workout
+// create a new todo
 const createTodo = async (req, res) => {
-  const {title, description,date} = req.body
+  const { title, description, date, categoryName, priorityId: reqPriorityId } = req.body;
 
-  let emptyFields = []
+  let emptyFields = [];
 
+  // Check for empty fields
   if (!title) {
-    emptyFields.push('title')
+    emptyFields.push('title');
   }
   if (!description) {
-    emptyFields.push('description')
+    emptyFields.push('description');
   }
   if (!date) {
-    emptyFields.push('date')
+    emptyFields.push('date');
   }
-  if (emptyFields.length > 0) {
-    return res.status(400).json({ error: 'Please fill in all fields', emptyFields })
+  if (!categoryName) {
+    emptyFields.push('categoryName');
+  }
+  if (!reqPriorityId) {
+    emptyFields.push('priorityId');
   }
 
-  // add to the database
-  try {
-    const user_id = req.user._id
-    const todo = await Todo.create({ title, description,date,user_id })
-    res.status(200).json(todo)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
+  if (emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all fields', emptyFields });
   }
-}
+
+  try {
+    const user_id = req.user._id;
+
+    // Find the category by ID
+    const category = await Category.findById(categoryName);
+
+    if (!category) {
+      return res.status(400).json({ error: 'Invalid category' });
+    }
+
+    // Find the priority by ID
+    const priority = await Priority.findById(reqPriorityId);
+
+    if (!priority) {
+      return res.status(400).json({ error: 'Invalid priority' });
+    }
+
+    const categoryId = category._id;
+    const priorityId = priority._id;
+
+    // Create the todo with the category and priority IDs
+    const todo = await Todo.create({ title, description, date, user_id, categoryId, priorityId });
+
+    res.status(200).json(todo);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
 
 // delete a workout
 const deleteTodo = async (req, res) => {

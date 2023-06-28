@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-
-const Schema = mongoose.Schema
-
+const Category = require('./CategoryModel');
+const Schema = mongoose.Schema;
 const TodoSchema = new Schema({
   title: {
     type: String,
@@ -12,13 +11,24 @@ const TodoSchema = new Schema({
     required: true
   },
   date: {
-    type: Date, // Specify the data type as Date
+    type: Date,
     required: true
   },
-  user_id:{
-    type:String,
-    required:true
+  categoryId: { 
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
+    required: true
+  },
+  priorityId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Priority',
+    default: null,
+  },
+  user_id: {
+    type: String,
+    required: true
   }
-}, { timestamps: true })
+}, { timestamps: true });
+const Todo = mongoose.model('Todo', TodoSchema);
 
-module.exports = mongoose.model('Todo', TodoSchema)
+module.exports = Todo;
