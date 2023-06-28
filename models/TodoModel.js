@@ -21,7 +21,7 @@ const TodoSchema = new Schema({
   },
   priorityId: {
     type: Schema.Types.ObjectId,
-    ref: 'Priority',
+    ref: 'Priority', 
     default: null,
   },
   user_id: {
